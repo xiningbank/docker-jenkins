@@ -1,0 +1,19 @@
+version: '3'
+
+networks:
+    lemp:
+
+services:
+    jenkins:
+        image: jenkins/jenkins:lts-jdk11
+        container_name: zkjenkins
+        ports:
+            - "8081:8080"
+            - "50001:50000"
+        volumes:
+            - ./jenkins_home:/var/jenkins_home
+        environment:
+            LANG: C.UTF-8
+            TZ: Asia/Shanghai
+        networks:
+            - lemp
